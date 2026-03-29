@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>TierGesund – Qualitäts-Check für Hunde & Katzen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #FEF7E8;
+            font-family: system-ui, 'Segoe UI', 'Helvetica Neue', 'Noto Sans', sans-serif;
+            padding: 20px 16px 40px;
+            color: #2E3A2C;
+        }
+
+        .app-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #7A9E8F;
+            margin-bottom: 6px;
+        }
+
+        .hero p {
+            font-size: 0.9rem;
+            color: #8B7A6B;
+            background: #FFF4E6;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 60px;
+        }
+
+        .cost-comparison-card {
+            background: #FFFAF0;
+            border-radius: 28px;
+            padding: 18px 20px;
+            margin-bottom: 28px;
+            border: 1px solid #FFE2C6;
+        }
+
+        .cost-comparison-card h3 {
+            font-size: 1.2rem;
+            color: #C28A5C;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .comparison-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+            margin: 16px 0 8px;
+        }
+
+        .stat-badge {
+            background: #E5F3EC;
+            border-radius: 24px;
+            padding: 10px 14px;
+            flex: 1;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #2A5C4A;
+        }
+
+        .stat-badge span {
+            display: block;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #CF7B4A;
+        }
+
+        .highlight-text {
+            background: #FCE9DA;
+            border-radius: 20px;
+            padding: 10px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #7A543C;
+        }
+
+        .question-card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 18px;
+            margin-bottom: 18px;
+            border: 1px solid #FFEFE0;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: #4A6A5C;
+        }
+
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .option-item {
+            background: #FEF5EA;
+            border-radius: 50px;
+            padding: 8px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: 1px solid #FFE0C0;
+            transition: background 0.15s;
+        }
+
+        .option-item:hover {
+            background: #FFEDDC;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: #C2A576;
+            width: 1.1rem;
+            height: 1.1rem;
+            margin: 0;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #4D3E32;
+        }
+
+        .checkbox-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            background: #FEF5EA;
+            border-radius: 50px;
+            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: 1px solid #FFE0C0;
+        }
+
+        .submit-btn {
+            background: #B7CFC0;
+            border: none;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2D4A3E;
+            margin: 16px 0 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+            background: #A9C2B3;
+        }
+
+        .result-box {
+            background: #EFF9F2;
+            border-radius: 28px;
+            padding: 20px;
+            margin-top: 16px;
+            border-left: 6px solid #E2B88C;
+        }
+
+        .result-box h3 {
+            font-size: 1.3rem;
+            color: #846B50;
+            margin-bottom: 12px;
+        }
+
+        .feedback-text {
+            font-size: 0.95rem;
+            line-height: 1.45;
+            margin: 10px 0;
+        }
+
+        .saving-badge {
+            background: #FFF1E0;
+            border-radius: 24px;
+            padding: 12px;
+            margin-top: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .email-contact-card {
+            background: #F1E6D9;
+            border-radius: 28px;
+            padding: 14px 18px;
+            margin: 20px 0 16px;
+            text-align: center;
+            border: 1px solid #EAD5BD;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .email-link {
+            background: #D9C2A8;
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: #2D3E2A;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .email-link:active {
+            transform: scale(0.97);
+        }
+
+        .visitor-counter {
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 0.8rem;
+            color: #AD9A88;
+        }
+
+        .visitor-counter img {
+            vertical-align: middle;
+        }
+
+        .footnote {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #AD9A88;
+        }
+
+        hr {
+            margin: 10px 0;
+            border: 0.5px solid #FFE0C0;
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="hero">
+        <h1>🐾 TierGesund-Check</h1>
+        <p>Futterqualität & Vorsorge für Hunde und Katzen</p>
+    </div>
+
+    <div class="cost-comparison-card">
+        <h3>📊 Kostenvergleich: Gutes Futter vs. Tierarzt</h3>
+        <div class="comparison-stats">
+            <div class="stat-badge">🍽️ Mehrkosten Premiumfutter<br><span>~25-35 €/Monat</span></div>
+            <div class="stat-badge">💊 Tierarztkosten sparen<br><span>bis zu 400 €/Jahr</span></div>
+        </div>
+        <div class="highlight-text">
+            Hochwertige Nahrung = weniger Zahnstein, seltener Allergien, besseres Fell.<br>
+            <strong>1€ mehr pro Tag im Napf – potenziell 400€ weniger beim Tierarzt pro Jahr.</strong>
+        </div>
+    </div>
+
+    <form id="healthQuiz">
+        <div class="question-card">
+            <div class="question-title">1. Tierart</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="petType" value="hund"> Hund</label>
+                <label class="option-item"><input type="radio" name="petType" value="katze"> Katze</label>
+                <label class="option-item"><input type="radio" name="petType" value="beide"> Beide</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">2. Alter des Tieres</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="petAge" value="jung"> Jungtier (unter 1 Jahr)</label>
+                <label class="option-item"><input type="radio" name="petAge" value="erwachsen"> Erwachsen (1–7 Jahre)</label>
+                <label class="option-item"><input type="radio" name="petAge" value="senior"> Senior (über 7 Jahre)</label>
+                <label class="option-item"><input type="radio" name="petAge" value="gemischt"> Unterschiedlich / mehrere</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">3. Aktuelle Futterqualität</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="foodQuality" value="premium"> Premium (hoher Fleischanteil, getreidefrei)</label>
+                <label class="option-item"><input type="radio" name="foodQuality" value="mittel"> Mittelklasse</label>
+                <label class="option-item"><input type="radio" name="foodQuality" value="budget"> Budget / Discounter</label>
+                <label class="option-item"><input type="radio" name="foodQuality" value="selbst"> Selbstgekocht / Barf</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">4. Fütterungsart (Trocken-/Nassfutter-Verhältnis)</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="foodRatio" value="nur_trocken"> Nur Trockenfutter</label>
+                <label class="option-item"><input type="radio" name="foodRatio" value="mehr_trocken"> Überwiegend Trocken (ca. 70/30)</label>
+                <label class="option-item"><input type="radio" name="foodRatio" value="ausgeglichen"> Ausgeglichen (ca. 50/50)</label>
+                <label class="option-item"><input type="radio" name="foodRatio" value="mehr_nass"> Überwiegend Nass (ca. 70/30)</label>
+                <label class="option-item"><input type="radio" name="foodRatio" value="nur_nass"> Nur Nassfutter</label>
+                <label class="option-item"><input type="radio" name="foodRatio" value="barf_roh"> Barf / Frischfleisch</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">5. Tierarztbesuche (letzte 12 Monate, ohne Routine-Impfungen)</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="vetVisits" value="0"> 0-mal – top fit</label>
+                <label class="option-item"><input type="radio" name="vetVisits" value="1"> 1-mal</label>
+                <label class="option-item"><input type="radio" name="vetVisits" value="2"> 2–3-mal</label>
+                <label class="option-item"><input type="radio" name="vetVisits" value="4"> 4+ mal</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">6. Bestehende Gesundheitsprobleme (mehrfach möglich)</div>
+            <div class="checkbox-grid">
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="keine"> Keine bekannten</label>
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="uebergewicht"> Übergewicht</label>
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="haut"> Haut-/Fellprobleme</label>
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="zahn"> Zahnstein / Mundgeruch</label>
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="verdauung"> Verdauungsstörungen</label>
+                <label class="checkbox-item"><input type="checkbox" name="healthIssues" value="allergie"> Allergien / Unverträglichkeiten</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">7. Bereitschaft zur Futterumstellung</div>
+            <div class="options-group">
+                <label class="option-item"><input type="radio" name="readiness" value="hoch"> Ja, sofort – für mehr Gesundheit</label>
+                <label class="option-item"><input type="radio" name="readiness" value="mittel"> Vielleicht, wenn es sich lohnt</label>
+                <label class="option-item"><input type="radio" name="readiness" value="niedrig"> Eher nicht / zu teuer</label>
+            </div>
+        </div>
+
+        <button type="button" class="submit-btn" id="evaluateBtn">✓ Auswerten & individuelle Empfehlung</button>
+    </form>
+
+    <div id="resultArea" style="display: none;"></div>
+
+    <div class="email-contact-card">
+        <span>📧 Für individuelle Beratung:</span>
+        <a href="mailto:vitalefellnasen@web.de" class="email-link">vitalefellnasen@web.de</a>
+    </div>
+
+    <div class="visitor-counter">
+        📊 <img src="https://visitor-badge.laobi.icu/badge?page_id=tiergesundheit-fragebogen" alt="Besucherzähler">
+    </div>
+
+    <div class="footnote">
+        🌱 Kleine Veränderung, große Wirkung – Dein Tier wird es dir danken.
+    </div>
+</div>
+
+<script>
+    (function() {
+        const evaluateBtn = document.getElementById('evaluateBtn');
+        const resultArea = document.getElementById('resultArea');
+
+        function getRadioValue(name) {
+            const radios = document.querySelectorAll(`input[name="${name}"]`);
+            for (let radio of radios) if (radio.checked) return radio.value;
+            return null;
+        }
+
+        function getCheckedHealthIssues() {
+            const checkboxes = document.querySelectorAll('input[name="healthIssues"]:checked');
+            let values = Array.from(checkboxes).map(cb => cb.value);
+            if (values.includes('keine') && values.length > 1) values = values.filter(v => v !== 'keine');
+            return values;
+        }
+
+        function getFoodRatioAdvice(ratio) {
+            const map = {
+                'nur_trocken': 'Nur Trockenfutter: Katzen benötigen Feuchtigkeit – bitte Nassfutter ergänzen oder Wasser anbieten.',
+                'mehr_trocken': 'Überwiegend Trockenfutter: Ein höherer Nassfutteranteil unterstützt die Nierengesundheit.',
+                'ausgeglichen': 'Ausgewogene Mischung – ideal für Zahngesundheit (Trocken) und Hydration (Nass).',
+                'mehr_nass': 'Überwiegend Nassfutter – sehr gut für die Flüssigkeitsversorgung.',
+                'nur_nass': 'Nur Nassfutter – achten Sie auf hochwertige Rezepturen ohne Zucker und Getreide.',
+                'barf_roh': 'Barf / Rohfütterung – regelmäßige tierärztliche Kontrolle der Nährstoffbalance empfohlen.'
+            };
+            return map[ratio] || '';
+        }
+
+        function getAgeAdvice(age) {
+            if (age === 'jung') return 'Jungtiere: Hochwertiges Futter legt das Fundament für ein gesundes Leben – reduzierte Tierarztkosten im Alter.';
+            if (age === 'senior') return 'Senioren: Spezielle Senior-Nahrung mit Gelenkunterstützung und leicht verdaulichem Eiweiß kann chronische Erkrankungen hinauszögern.';
+            if (age === 'erwachsen') return 'Erwachsene Tiere: Ausgewogene, hochwertige Ernährung erhält die Gesundheit und beugt Altersleiden vor.';
+            return '';
+        }
+
+        function generateAdvice(pet, age, foodQuality, foodRatio, vetVisits, healthIssues, readiness) {
+            let advice = '';
+            let foodUpgradeCostMonthly = 0;
+
+            if (foodQuality === 'budget') {
+                advice += 'Budget-Futter enthält oft Füllstoffe, Zucker und zu wenig tierisches Protein. Ein Umstieg auf hochwertiges Futter stärkt das Immunsystem und kann bestehende Beschwerden lindern. ';
+                foodUpgradeCostMonthly = 30;
+            } else if (foodQuality === 'mittel') {
+                advice += 'Mittelklasse-Futter ist ein guter Anfang. Achten Sie auf einen Fleischanteil über 60% und verzichten Sie auf künstliche Zusätze. Premium-Futter bringt oft spürbare Verbesserungen. ';
+                foodUpgradeCostMonthly = 15;
+            } else if (foodQuality === 'premium') {
+                advice += 'Sie füttern bereits Premium – optimal für die Gesundheit. Achten Sie auf Abwechslung und individuelle Bedürfnisse (z.B. Single Protein bei Allergien). ';
+                foodUpgradeCostMonthly = 0;
+            } else if (foodQuality === 'selbst') {
+                advice += 'Selbstgekocht oder Barf kann sehr gesund sein, sofern es ausgewogen ist. Lassen Sie regelmäßig Blutwerte kontrollieren, um Mangelerscheinungen zu vermeiden. ';
+                foodUpgradeCostMonthly = 10;
+            }
+
+            let vetVisitCount = { '0':0, '1':1, '2':2.5, '4':4.5 }[vetVisits] || 0;
+            const currentYearlyVetCost = vetVisitCount * 75;
+            let reductionFactor = foodQuality === 'budget' ? 0.35 : (foodQuality === 'mittel' ? 0.2 : 0.05);
+            const hasProblems = healthIssues.length > 0 && !healthIssues.includes('keine');
+            if (hasProblems) reductionFactor += 0.1;
+            reductionFactor = Math.min(0.55, reductionFactor);
+            const potentialVetSaving = Math.round(currentYearlyVetCost * reductionFactor);
+            const yearlyExtraFoodCost = foodUpgradeCostMonthly * 12;
+            const netSaving = potentialVetSaving - yearlyExtraFoodCost;
+
+            let comparisonHtml = '';
+            if (foodQuality === 'budget' || (foodQuality === 'mittel' && hasProblems)) {
+                if (netSaving > 0) {
+                    comparisonHtml = `<div class="saving-badge"><strong>💰 Mögliche Ersparnis:</strong> Durch hochwertigeres Futter (+${foodUpgradeCostMonthly}€/Monat) sparen Sie schätzungsweise ${potentialVetSaving}€ Tierarztkosten pro Jahr. Netto-Ersparnis: ${netSaving}€/Jahr + besseres Wohlbefinden.</div>`;
+                } else {
+                    comparisonHtml = `<div class="saving-badge"><strong>📈 Gesundheitsinvestition:</strong> ${yearlyExtraFoodCost}€ mehr pro Jahr für Premiumfutter können langfristig hunderte Euro Tierarztkosten sparen (Zahn-OP, Allergiebehandlung etc.).</div>`;
+                }
+            } else {
+                comparisonHtml = `<div class="saving-badge">💡 Hochwertige Ernährung ist die beste Vorsorge. Studien zeigen: Tiere mit gutem Futter haben seltener Zahnprobleme, Hauterkrankungen und Übergewicht.</div>`;
+            }
+
+            let specialTip = '';
+            if (healthIssues.includes('uebergewicht')) specialTip += 'Übergewicht: Reduzieren Sie Leckerlis, kontrollieren Sie die Portionsgröße und wählen Sie Light-Futter mit mehr Protein. ';
+            if (healthIssues.includes('haut') || healthIssues.includes('allergie')) specialTip += 'Haut/Allergie: Probieren Sie getreidefreies Futter mit einer neuen Proteinquelle (Pferd, Insekt, Ente). ';
+            if (healthIssues.includes('zahn')) specialTip += 'Zahnstein: Trockenfutter allein reicht nicht – bieten Sie Zahnpflege-Kauen und vermeiden Sie Zucker im Futter. ';
+            if (healthIssues.includes('verdauung')) specialTip += 'Verdauung: Probiotika und leicht verdauliches Futter mit Präbiotika unterstützen die Darmflora. ';
+            if (specialTip === '' && !hasProblems) specialTip = 'Ihr Tier scheint aktuell gesund – durch hochwertige Ernährung bleibt es lange fit und vital.';
+
+            const ageAdvice = getAgeAdvice(age);
+            const ratioAdvice = getFoodRatioAdvice(foodRatio);
+            let readinessNote = readiness === 'niedrig' ? 'Sie zögern wegen der Kosten? Schon kleine Schritte (besseres Trockenfutter, mehr Nassfutter) verbessern die Gesundheit – und sparen auf Dauer Tierarztrechnungen.' : (readiness === 'mittel' ? 'Sie sind offen für Veränderung – das ist großartig. Selbst eine moderate Umstellung bringt positive Effekte.' : 'Ihre Einstellung ist vorbildlich. Hochwertiges Futter ist die beste Investition in ein langes, gesundes Tierleben.');
+            
+            let petNote = pet === 'katze' ? 'Katzen sind reine Fleischfresser. Achten Sie auf hohen Feuchtigkeitsgehalt (Nassfutter) und Taurin – das beugt Nierenerkrankungen vor.' : (pet === 'hund' ? 'Hunde profitieren von ausgewogenem Protein, gesunden Fetten und Omega-3-Fettsäuren für Gelenke und Fell.' : 'Bei Hunden und Katzen getrennt: Katzen brauchen mehr Feuchtigkeit und Taurin, Hunde profitieren von Gelenkunterstützung.');
+
+            return `<div class="result-box">
+                        <h3>Ihr persönlicher Gesundheits-Check</h3>
+                        <div class="feedback-text">${advice}</div>
+                        ${ageAdvice ? `<div class="feedback-text"><strong>Altershinweis:</strong> ${ageAdvice}</div>` : ''}
+                        ${ratioAdvice ? `<div class="feedback-text"><strong>Zum Futtertyp:</strong> ${ratioAdvice}</div>` : ''}
+                        <div class="feedback-text"><strong>Empfehlung:</strong> ${specialTip}</div>
+                        <div class="feedback-text">${petNote}</div>
+                        <div class="feedback-text">${readinessNote}</div>
+                        <hr>
+                        ${comparisonHtml}
+                        <div style="margin-top: 14px; background:#FFF0E0; border-radius: 20px; padding: 10px; font-size:0.85rem;">
+                        📌 Fazit: Hochwertiges Futter = starkes Immunsystem + weniger Tierarztbesuche + zufriedeneres Tier.
+                        </div>
+                    </div>`;
+        }
+
+        function showError(msg) {
+            resultArea.style.display = 'block';
+            resultArea.innerHTML = `<div class="result-box"><h3>Hinweis</h3><p>${msg}</p><button onclick="document.getElementById('resultArea').style.display='none'" style="background:#DFC9B5; border:none; border-radius:40px; padding:8px 16px; margin-top:10px;">Schließen</button></div>`;
+            resultArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function evaluate() {
+            const pet = getRadioValue('petType');
+            const age = getRadioValue('petAge');
+            const foodQuality = getRadioValue('foodQuality');
+            const foodRatio = getRadioValue('foodRatio');
+            const vetVisits = getRadioValue('vetVisits');
+            const readiness = getRadioValue('readiness');
+            if (!pet || !age || !foodQuality || !foodRatio || !vetVisits || !readiness) {
+                showError('Bitte beantworten Sie alle 7 Fragen – das dauert nur einen Moment.');
+                return;
+            }
+            const healthIssues = getCheckedHealthIssues();
+            resultArea.style.display = 'block';
+            resultArea.innerHTML = generateAdvice(pet, age, foodQuality, foodRatio, vetVisits, healthIssues, readiness);
+            resultArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        evaluateBtn.addEventListener('click', evaluate);
+    })();
+</script>
+</body>
+</html>
